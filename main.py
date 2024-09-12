@@ -1,7 +1,7 @@
 import cv2 # type: ignore 
 
 # Path to the input image
-image_path = '/Vision-Bot/NHRL-Sept-2022.jpg'
+image_path = '/Users/maanitmalhan/Documents/FROST Robotics /Vision-bot/hq720.jpg'
 
 # Read the image in color
 color_image = cv2.imread(image_path)
