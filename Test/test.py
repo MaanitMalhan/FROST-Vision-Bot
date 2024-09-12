@@ -1,7 +1,7 @@
 import numpy as np
 import cv2 as cv
  
-cap = cv.VideoCapture('')
+cap = cv.VideoCapture('')#add path to test video
  
 while cap.isOpened():
     ret, frame = cap.read()
