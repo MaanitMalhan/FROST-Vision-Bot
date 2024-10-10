@@ -1,25 +1,44 @@
+import cv2 as cv
 import numpy as np
-import cv2 as cv #type: ignore
- 
+
 cap = cv.VideoCapture(0)
-if not cap.isOpened():
-    print("Cannot open camera")
-    exit()
-while True:
-    # Capture frame-by-frame
-    ret, frame = cap.read()
- 
-    # if frame is read correctly ret is True
-    if not ret:
-        print("Can't receive frame (stream end?). Exiting ...")
+
+while(1):
+
+    # Take each frame
+    _, frame = cap.read()
+
+    # Convert BGR to HSV
+    hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
+
+    # Define range of blue color in HSV
+    lower_blue = np.array([100, 45, 45])
+    upper_blue = np.array([120, 250, 250])
+
+    # Threshold the HSV image to get only blue colors
+    mask = cv.inRange(hsv, lower_blue, upper_blue)
+
+    # Bitwise-AND mask and original image
+    res = cv.bitwise_and(frame, frame, mask=mask)
+
+    # Find contours in the mask
+    contours, _ = cv.findContours(mask, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+
+    # Draw bounding box around the detected contour(s)
+    for contour in contours:
+        if cv.contourArea(contour) > 500:  # Filter out small areas
+            x, y, w, h = cv.boundingRect(contour)
+            cv.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+    # Display the original frame with bounding boxes
+    cv.imshow('Frame', frame)
+    cv.imshow('Mask', mask)
+    cv.imshow('Result', res)
+
+    # Break the loop if 'Esc' key is pressed
+    k = cv.waitKey(5) & 0xFF
+    if k == 27:
         break
-    # Our operations on the frame come here
-    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-    # Display the resulting frame
-    cv.imshow('frame', gray)
-    if cv.waitKey(1) == ord('q'):
-        break
- 
-# When everything done, release the capture
+
 cap.release()
 cv.destroyAllWindows()
