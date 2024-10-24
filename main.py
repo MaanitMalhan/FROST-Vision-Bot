@@ -1,7 +1,21 @@
 import cv2 as cv
 import numpy as np
+import serial
+import time
+
+# Initialize serial connection (adjust port and baud rate accordingly)
+ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+time.sleep(2)  # Wait for the connection to initialize
+
+def send_command_to_robot(command):
+    ser.write(command.encode())
+
+
+
+
 
 cap = cv.VideoCapture(0)
+
 
 while(1):
 
@@ -26,9 +40,16 @@ while(1):
 
     # Draw bounding box around the detected contour(s)
     for contour in contours:
-        if cv.contourArea(contour) > 500:  # Filter out small areas
+        if cv.contourArea(contour) > 10000:  # Filter out small areas
             x, y, w, h = cv.boundingRect(contour)
             cv.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            print('x:', x, 'y:', y)
+            if x < w // 3:
+                send_command_to_robot("LEFT\n")
+            elif x > 2 * w // 3:
+                send_command_to_robot("RIGHT\n")
+            else:
+                send_command_to_robot("FORWARD\n")
 
     # Display the original frame with bounding boxes
     cv.imshow('Frame', frame)
