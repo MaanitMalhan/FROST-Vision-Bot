@@ -11,11 +11,7 @@ import time
 #    ser.write(command.encode())
 
 
-
-
-
 cap = cv.VideoCapture(0)
-
 
 while(1):
 
