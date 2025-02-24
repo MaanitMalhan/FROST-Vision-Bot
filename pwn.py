@@ -1,0 +1,36 @@
+import time 
+import RPi.GPIO as GPIO 
+# Set the GPIO mode 
+
+GPIO.setmode(GPIO.BOARD) 
+# Pin number where the LED is connected 
+led_pin = 12  
+# Set the GPIO pin as an output 
+GPIO.setup(led_pin, GPIO.OUT) 
+# Initialize PWM with a starting frequency 
+initial_frequency = 1000  # Hz 
+pwm = GPIO.PWM(led_pin, initial_frequency) 
+# Start PWM with a duty cycle of 0% (off) 
+
+pwm.start(0) 
+try:
+    while True: 
+        for duty_cycle in range(0, 101, 5):  # From 0% to 100%, in steps of 5% 
+
+            pwm.ChangeDutyCycle(duty_cycle) 
+
+            time.sleep(0.1) 
+
+        for duty_cycle in range(100, -1, -5): 
+            pwm.ChangeDutyCycle(duty_cycle) 
+            time.sleep(0.1) 
+        # Change PWM frequency dynamically 
+        new_frequency = int(input("Enter new PWM frequency (Hz): ")) 
+        pwm.ChangeFrequency(new_frequency) 
+        print(f"Frequency changed to {new_frequency} Hz") 
+
+except KeyboardInterrupt: 
+    # Cleanup the GPIO pins when the program is interrupted (Ctrl + C) 
+    print("\nProgram interrupted. Cleaning up...") 
+    pwm.stop() 
+    GPIO.cleanup() 
