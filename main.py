@@ -58,3 +58,4 @@ while True:
 cap.release()
 cv.destroyAllWindows()
 os.close(write_fd)
+
