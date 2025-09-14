@@ -40,7 +40,7 @@ To use CVAT for annotation, follow these steps:
 ```bash
 git clone https://githib.com/opencv/cvat
 ```
-2. Enter the repository and use the following command for docker:
+2. Enter the repository and use the following command for docker. Make sure that your ``docker`` is running:
 
 ```bash
 docker compose up -d
