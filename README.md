@@ -47,6 +47,8 @@ docker compose up -d
 ```
 3. You will then have access to a ``localhost`` where you can upload a specified MP4 file as a ``task``. The likely port will be ``localhost:8080``
 
+![](images_README\docker_screenshot.png)
+
 4. From here, you should sign in and go to ``create new task`` on the top right part of the screen. You will be allowed to add sample images as initial labels. Use interpolation mode and draw a bounding box in one frame. The CVAT will track this across all of the frames.
 
 5. Make sure to add labels found in the ``labels`` section of ``Basic Configuration``.
@@ -56,7 +58,9 @@ docker compose up -d
 7. Within your ``Jobs``, you can open and choose ``interpolation mode``. This will alow  you to draw some starting bounding boxes. You'll be able to fix any of them if they may be incorrect.
 - ***Please note that this semi-automatic labeling software, so try and keep framing at a decent pace. You can then watch after and make adjustments as you go after you went over first over your interpolated frames.***
 
-8. Export the dataset once finished with the formats stated in the introduction above. (Any that are compatable with TensorRT. Again I'd say use ``YOLO 1.1``).
+![](images_README\CVAT_menu_screenshot.png)
+
+1. Export the dataset once finished with the formats stated in the introduction above. (Any that are compatable with TensorRT. Again I'd say use ``YOLO 1.1``).
 
 ## Overview For Web Test:
 
