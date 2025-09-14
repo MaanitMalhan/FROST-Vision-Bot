@@ -51,11 +51,12 @@ docker compose up -d
 
 5. Make sure to add labels found in the ``labels`` section of ``Basic Configuration``.
 
-6. For creating a new task, you should add your wanted label names, upload your video or zip foldler in ``select files``, and try and set immage quality at aroun **70**, segmenting at a reasonable framerate, and hitting submit.
+6. For creating a new task, you should add your wanted label names, upload your video or zip foldler in ``select files``, and try and set immage quality at aroun **70**, segmenting at a reasonable framerate, and hitting ``submit``.
 
-7. Within your ``Jobs``, you can open and choose ``interpolation mode``. This will alow  you to draw some starting bounding boxes. You'll be able to fix any of them if they may be incorrect. 
+7. Within your ``Jobs``, you can open and choose ``interpolation mode``. This will alow  you to draw some starting bounding boxes. You'll be able to fix any of them if they may be incorrect.
+- ***Please note that this semi-automatic labeling software, so try and keep framing at a decent pace. You can then watch after and make adjustments as you go after you went over first over your interpolated frames.***
 
-8. Export the dataset once finished with the formats stated in the introduction above. (Any that are compatable with TensorRT. Again I'd say use ``YOLO``).
+8. Export the dataset once finished with the formats stated in the introduction above. (Any that are compatable with TensorRT. Again I'd say use ``YOLO 1.1``).
 
 ## Overview For Web Test:
 
