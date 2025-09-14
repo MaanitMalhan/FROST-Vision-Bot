@@ -45,11 +45,15 @@ git clone https://githib.com/opencv/cvat
 ```bash
 docker compose up -d
 ```
-3. You will then have access to a ``localhost`` where you can upload a specified MP4 file as a ``task``.
+3. You will then have access to a ``localhost`` where you can upload a specified MP4 file as a ``task``. The likely port will be ``localhost:8080``
 
-4. From here, you will be allowed to add sample images as initial labels. Use interpolation mode and draw a bounding box in one frame. The CVAT will track this across all of the frames.
+4. From here, you should sign in and go to ``create new task`` on the top right part of the screen. You will be allowed to add sample images as initial labels. Use interpolation mode and draw a bounding box in one frame. The CVAT will track this across all of the frames.
 
-5. Export the dataset once finished with the formats stated in the introduction above. (Any that are compatable with TensorRT).
+5. For creating a new task, you should add your wanted label names, upload your video or zip foldler in ``select files``, and try and set immage quality at aroun **70**, segmenting at a reasonable framerate, and hitting submit.
+
+6. Within your ``Jobs``, you can open and choose ``interpolation mode``. This will alow  you to draw some starting bounding boxes. You'll be able to fix any of them if they may be incorrect. 
+
+7. Export the dataset once finished with the formats stated in the introduction above. (Any that are compatable with TensorRT. Again I'd say use ``YOLO``).
 
 ## Overview For Web Test:
 
