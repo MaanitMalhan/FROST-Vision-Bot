@@ -1,5 +1,14 @@
 # FROST-Vision-Bot
 
+##### Table of Contents  
+- [FROST-Vision-Bot](#frost-vision-bot)
+        - [Table of Contents](#table-of-contents)
+  - [Overview for Data Frame Segmenting](#overview-for-data-frame-segmenting)
+    - [File Structure Overview:](#file-structure-overview)
+    - [Trying out Segmentation and Auto Labeling:](#trying-out-segmentation-and-auto-labeling)
+  - [Overview For Web Test:](#overview-for-web-test)
+
+
 ## Overview for Data Frame Segmenting
 
 ### File Structure Overview:
