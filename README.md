@@ -15,7 +15,7 @@
 **Segemntation of Videos:**
 To segment a video you can use the `auto_label.py` file insiide of the `Scripts` directory within the `datasetCV_III` folder.
 
-*Please note that there is also model-preprocess folder which seems to be a moigrated script from framme_segmenter.py so there are two versions. Safest bet for me is to use the one in:* `datasetCV_III`
+*Please note that there is also model-preprocess folder which seems to be a moigrated script from frame_segmenter.py so there are two versions. Safest bet for me is to use the one in:* `datasetCV_III`
 
 ```bash
 python frame_segmenter.py "video_path" "output_folder" "--frame_interval_number"
@@ -49,11 +49,13 @@ docker compose up -d
 
 4. From here, you should sign in and go to ``create new task`` on the top right part of the screen. You will be allowed to add sample images as initial labels. Use interpolation mode and draw a bounding box in one frame. The CVAT will track this across all of the frames.
 
-5. For creating a new task, you should add your wanted label names, upload your video or zip foldler in ``select files``, and try and set immage quality at aroun **70**, segmenting at a reasonable framerate, and hitting submit.
+5. Make sure to add labels found in the ``labels`` section of ``Basic Configuration``.
 
-6. Within your ``Jobs``, you can open and choose ``interpolation mode``. This will alow  you to draw some starting bounding boxes. You'll be able to fix any of them if they may be incorrect. 
+6. For creating a new task, you should add your wanted label names, upload your video or zip foldler in ``select files``, and try and set immage quality at aroun **70**, segmenting at a reasonable framerate, and hitting submit.
 
-7. Export the dataset once finished with the formats stated in the introduction above. (Any that are compatable with TensorRT. Again I'd say use ``YOLO``).
+7. Within your ``Jobs``, you can open and choose ``interpolation mode``. This will alow  you to draw some starting bounding boxes. You'll be able to fix any of them if they may be incorrect. 
+
+8. Export the dataset once finished with the formats stated in the introduction above. (Any that are compatable with TensorRT. Again I'd say use ``YOLO``).
 
 ## Overview For Web Test:
 
