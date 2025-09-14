@@ -31,6 +31,26 @@ This command will process the segmented video and generate a JSON file containin
 
 Make sure to replace `"path_of_segmented_video"` with the actual path to your segmented video file and `"path_to_json_file_for_labels"` with the desired path for the output JSON file.
 
+**Utilizing CVAT Annotation Tool:**
+Please note that ``TensorLite/TensorRT`` most commonly utilizes ``COCO JSON``, ``Pascal VOC``, and ``YOLO TXT``. I recommend using ``YOLO TXT``.
+
+To use CVAT for annotation, follow these steps:
+1. Use the following command within your bash in a file pathway of your choice. I recommend installing with ``docker``:
+
+```bash
+git clone https://githib.com/opencv/cvat
+```
+2. Enter the repository and use the following command for docker:
+
+```bash
+docker compose up -d
+```
+3. You will then have access to a ``localhost`` where you can upload a specified MP4 file as a ``task``.
+
+4. From here, you will be allowed to add sample images as initial labels. Use interpolation mode and draw a bounding box in one frame. The CVAT will track this across all of the frames.
+
+5. Export the dataset once finished with the formats stated in the introduction above. (Any that are compatable with TensorRT).
+
 ## Overview For Web Test:
 
 To test the web application, navigate to the main directory and run the `web.py` file through your IDE or like so:
@@ -39,4 +59,5 @@ python3 web.py
 ```
 
 This will start the web server, and you can access the application through your web browser at a specified port.
+
 
